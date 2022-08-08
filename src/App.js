@@ -1,41 +1,63 @@
-const Card = ()=>{
-  return(
-    <div className="Card-wrapper">
-    <div className="Card-wrapper-text">
-    <h1>
-    ԱՐՏԱՀԱՆՈՒՄ
-    </h1>
-    <p1>Ուղարկե՛ք Ձեր փաստաթղթերը, ծանրոցները և բեռները
-    ՀՀ-ից դեպի ԱՄՆ-ի և Ռուսաստանի ցանկացած հասցե  </p1>
-    </div>
-    <div className="Cards-section">
-    <div className="Card1">
-      <img src="https://onex.am/img/pages/export/export_usa.jpg"className="img1" alt="Card1" /> 
-      <p className="Card-text">Արտահանում ՀՀ-ից դեպի ԱՄՆ</p>
-    </div>
-    <div className="Card2">
-      <img src="https://onex.am/img/pages/export/export_rus.jpg"  className="img2"alt="Card2" />
-      <p className="Card-text">Արտահանում ՀՀ-ից դեպի Ռուսաստան</p>
-    </div>
-    <div className="Card3">
-      <img src="https://onex.am/img/docs.svg"className="img3"alt="Card3" />
-      <p className="Card-text3">Փաստաթղթերի առաքում ՀՀ-ից դեպի աշխարհի ցանկացած կետ</p>
 
+
+const ExportSectionHeading = () => {
+  return (
+    <div className="export-section-text">
+      <h1>
+        ԱՐՏԱՀԱՆՈՒՄ
+      </h1>
+      <p>
+        Ուղարկե՛ք Ձեր փաստաթղթերը, ծանրոցները և բեռները
+        ՀՀ-ից դեպի ԱՄՆ-ի և Ռուսաստանի ցանկացած հասցե
+      </p>
     </div>
+  )
+}
+const Card = (props) => {
+  const { imgUrl, label } = props
+
+  return (
+    <div className="card">
+      <img src={imgUrl} alt="card" />
+      <p className="Card-text">{label}</p>
     </div>
-    </div>
-  );
+  )
 }
 
+const CardsWrapper = () => {
+  return (
+    <div className="cards-wrapper">
+      <Card
+        imgUrl={'https://onex.am/img/pages/export/export_usa.jpg'}
+        label={'Արտահանում ՀՀ-ից դեպի ԱՄՆ'}
+      />
+      <Card
+        imgUrl={'https://onex.am/img/pages/export/export_rus.jpg'}
+        label={'Արտահանում ՀՀ-ից դեպի Ռուսաստան'}
+      />
+      <Card
+        imgUrl={'https://onex.am/img/docs.svg'}
+        label={'Փաստաթղթերի առաքում ՀՀ-ից դեպի աշխարհի ցանկացած կետ'}
+      />
+    </div>
+  )
+}
 
-
+const ExportSection = () => {
+  return (
+    <div className="export-section">
+      <ExportSectionHeading />
+      <CardsWrapper />
+    </div>
+  )
+}
 
 function App() {
-    return (
-    <div className="App"> 
-    <Card/>
+  return (
+    <div className="App">
+      <ExportSection />
     </div>
-    );
+  );
 }
 
 export default App;
