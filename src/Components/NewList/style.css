@@ -1,0 +1,9 @@
+    .list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .list-btn {
+        margin-left: 10px;
+    }
