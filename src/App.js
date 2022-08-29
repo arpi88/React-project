@@ -1,9 +1,9 @@
 import "./App.css";
-import { Button } from "..src/Button";
+import { ButtonsGroup } from "../src/Components/ButtonsGroup";
 function App() {
   return (
-    <div classname="App">
-      <Button />
+    <div className="App">
+      <ButtonsGroup />
     </div>
   );
 }
