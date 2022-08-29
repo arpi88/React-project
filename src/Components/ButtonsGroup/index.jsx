@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { Button } from "../Button";
 import "./style.css";
 export const ButtonsGroup = (props) => {
-  const [colour, setColour] = useState(`blue`);
-  setColour = ["grey", "green", "yellow", "red", "white"];
+
   return (
     <div className="buttons-wrapper">
-      <button colour={colour}>
-        <p className="btn-text" text={text}></p>
-      </button>
-      {props.children}
+      {/* Simple buttons */}
+      <Button value={'primary'}  color={'#fcfcfc'} bgColor={'#0c6efd'} />
+      <Button value={'secondary'}  color={'#fcfcfc'} bgColor={'#6c757d '}/> 
+      <Button value={'success'}/>
+      <Button value={'info'}/>
+      <Button value={'warning'}/>
+      <Button value={'danger'}/>
     </div>
   );
 };
