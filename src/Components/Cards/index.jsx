@@ -1,13 +1,8 @@
 import "./style.css";
 import { Card, CardBody, CardTitle, CardText, Button } from "reactstrap";
-export const Cards = (props) => {
+export const Cards = ({}) => {
   return (
-    <Card
-      className="card-wrapper"
-      style={{
-        width: "18rem",
-      }}
-    >
+    <Card className="card-wrapper" style={{ width: "18rem" }}>
       <CardBody>
         <CardTitle tag="h5">California</CardTitle>
         <CardText>

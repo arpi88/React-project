@@ -6,7 +6,6 @@ export const Main = () => {
       <Cards />
       <Cards />
       <Cards />
-      <Cards />
     </div>
   );
 };
