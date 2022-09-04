@@ -1,0 +1,12 @@
+.card-wrapper {
+    width: "18rem";
+    border: 1px solid rgb(245, 210, 245);
+    display: flex;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: space-between;
+}

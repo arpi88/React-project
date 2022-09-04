@@ -1,9 +1,12 @@
 import "./style.css";
-import "../Components/Card";
+import { Cards } from "../Cards";
 export const Main = () => {
   return (
     <div className="main-div-wrapper">
-      <Card />
+      <Cards />
+      <Cards />
+      <Cards />
+      <Cards />
     </div>
   );
 };
