@@ -30,16 +30,10 @@ export const Main = () => {
       title,
       description,
     };
-    const setTodoData=() => {
+    const setTodoData = () => {
       return [...prev, newTask];
     };
   };
-
-const deleteData= (id){
-
-}
-}
-  
 
   return (
     <main className="main-div">
