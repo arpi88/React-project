@@ -30,12 +30,14 @@ export const Main = () => {
       title,
       description,
     };
-    setTodoData((prev) => {
+    const setTodoData=() => {
       return [...prev, newTask];
-    });
+    };
   };
 
-deleteData (prev =>prev.filter((id) => id !===id))
+const deleteData= (id){
+
+}
 }
   
 
