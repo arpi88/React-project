@@ -6,9 +6,11 @@ export const Header = () => {
         <img src="ARPI H_free-file(4).png" alt="" />
       </div>
       <div className="header-menu-wrapper">
-        <ul>About me</ul>
-        <ul>Project</ul>
-        <ul>Contact</ul>
+        <ul className="header-menu">
+          <li> About me </li>
+          <li>Project</li>
+          <li>Contact</li>
+        </ul>
       </div>
     </div>
   );

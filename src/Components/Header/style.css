@@ -9,8 +9,14 @@
 
 .header-menu-wrapper {
     display: flex;
-    flex-direction: row;
     font-size: 20px;
     padding: 20px;
     cursor: pointer;
+    margin-right: 20px;
+}
+
+.header-menu {
+    display: flex;
+    list-style: none;
+    gap: 20px
 }

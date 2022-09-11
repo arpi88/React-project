@@ -1,0 +1,23 @@
+.input-form {
+    margin-top: 20px;
+    margin-left: 20px;
+    text-align: left;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    width: 290px;
+}
+
+.input-button {
+    width: 100px;
+    height: 30px;
+    margin-top: 20px;
+}
+
+.input {
+    height: 30px;
+    margin-top: 5px;
+}
