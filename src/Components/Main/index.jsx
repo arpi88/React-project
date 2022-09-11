@@ -34,9 +34,10 @@ export const Main = () => {
       return [...prev, newTask];
     });
   };
-  deleteCard((id) => {
-    return id.filter((id) => id !== id);
-  });
+
+deleteData (prev =>prev.filter((id) => id !===id))
+}
+  
 
   return (
     <main className="main-div">
