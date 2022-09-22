@@ -32,9 +32,7 @@ export const AddNewTask = ({ onSubmit }) => {
         <Label>Description</Label>
         <Input className="input" name="description" onChange={handleChange} />
         <FormText></FormText>
-        <Button className="input-button" onClick={deleteData}>
-          Add
-        </Button>
+        <Button className="input-button">Add</Button>
       </FormGroup>
     </Form>
   );

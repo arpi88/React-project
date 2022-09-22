@@ -30,9 +30,9 @@ export const Main = () => {
       title,
       description,
     };
-    const setTodoData = () => {
+    setTodoData((prev) => {
       return [...prev, newTask];
-    };
+    });
   };
 
   return (
