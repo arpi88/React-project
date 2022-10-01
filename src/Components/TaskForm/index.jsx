@@ -1,10 +1,10 @@
 import "./style.css";
 import { useState } from "react";
 import { Form, FormGroup, Label, Input, FormText, Button } from "reactstrap";
-export const AddNewTask = ({ onSubmit }) => {
+export const TaskForm = ({ onSubmit, editData }) => {
   const [formData, setFormData] = useState({
-    title: "",
-    description: "",
+    title: editData ? editData.title : "",
+    description: editData ? editData.description : "",
   });
   const handleChange = (e) => {
     const { target } = e;
@@ -21,6 +21,10 @@ export const AddNewTask = ({ onSubmit }) => {
       onSubmit={(event) => {
         event.preventDefault();
         onSubmit(formData);
+        setFormData({
+          title: " ",
+          description: " ",
+        });
       }}
     >
       <FormGroup className="form-group">
@@ -32,8 +36,8 @@ export const AddNewTask = ({ onSubmit }) => {
         <Label>Description</Label>
         <Input className="input" name="description" onChange={handleChange} />
         <FormText></FormText>
-        <Button className="input-button">Add</Button>
       </FormGroup>
+      <Button color="primary">{editData ? "Edit Task" : "Add New Task"}</Button>
     </Form>
   );
 };

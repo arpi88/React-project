@@ -2,3 +2,8 @@
     background-color: rgb(255, 241, 255);
     width: 100%;
 }
+
+.poject-forms {
+    display: flex;
+    justify-content: space-between;
+}
