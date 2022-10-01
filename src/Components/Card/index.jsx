@@ -1,10 +1,10 @@
 import "./style.css";
-import { Card, CardBody, CardTitle, CardText, Button } from "reactstrap";
+import { Card as LibCard, CardBody, CardTitle, CardText, Button } from "reactstrap";
 
-export const Cards = ({ todo, deleteTask, setEditData }) => {
+export const Card = ({ todo, deleteTask, setEditData }) => {
   const { title, description, id } = todo;
   return (
-    <Card className="card-wrapper" style={{ width: "18rem" }}>
+    <LibCard className="card-wrapper" style={{ width: "18rem" }}>
       <CardBody>
         <CardTitle tag="h5">{title}</CardTitle>
         <CardText>{description}</CardText>
@@ -17,6 +17,6 @@ export const Cards = ({ todo, deleteTask, setEditData }) => {
           </Button>
         </div>
       </CardBody>
-    </Card>
+    </LibCard>
   );
 };

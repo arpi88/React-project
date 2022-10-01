@@ -22,32 +22,44 @@ const data = [
 export const Main = () => {
   const [todoData, setTodoData] = useState(data);
   const [editData, setEditData] = useState(null);
+
   const onAddTask = (formData) => {
     const { title, description } = formData;
-    console.log(formData);
 
     const newTask = {
       id: Math.random(),
       title,
       description,
     };
+
     setTodoData((prev) => {
       return [...prev, newTask];
     });
   };
 
   const deleteTask = (id) => {
-    console.log(id);
     setTodoData((prev) => prev.filter((task) => task.id !== id));
   };
   const onEdit = (editedData) => {
-    console.log(editedData);
+    
+    setTodoData(prev => {
+      return prev.map(item => {
+        if (item.id === editedData.id) {
+          return editedData
+        }
+
+        return item
+      })
+    })
+
+    setEditData(null)
   };
+
   return (
     <main className="main-div">
       <div className="poject-forms">
         <TaskForm onSubmit={onAddTask} />
-        {editData & <TaskForm onSubmit={onEdit} editData={editData} />}
+        {!!editData && <TaskForm onSubmit={onEdit} editData={editData} />}
       </div>
       <TodoSection
         todoData={todoData}

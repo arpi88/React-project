@@ -1,12 +1,12 @@
 import "./style.css";
-import { Cards } from "../Cards";
+import { Card } from "../Card";
 
 export const TodoSection = ({ todoData, deleteTask, setEditData }) => {
   return (
     <div className="main-div">
       {todoData.map((todo) => {
         return (
-          <Cards
+          <Card
             todo={todo}
             key={todo.id}
             deleteTask={deleteTask}
