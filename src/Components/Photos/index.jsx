@@ -1,9 +1,13 @@
 import "./style.css";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Post } from "../Post";
+
 const url = `https://jsonplaceholder.typicode.com/photos`;
+
 export const Photos = () => {
   const [photosData, setPhotosData] = useState([]);
+
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
@@ -16,9 +20,8 @@ export const Photos = () => {
     <div>
       <div className="photos-wrapper">
         {photosData.map((photo) => (
-          <Photos
+          <Post
             title={photo.title}
-            img
             src={photo.url}
             alt="photo"
             key={photo.id}
