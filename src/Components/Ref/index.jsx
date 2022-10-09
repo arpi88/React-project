@@ -38,18 +38,33 @@ export const Ref = () => {
     clearInterval(intervalRef);
   };
 
-  const moveDown = (element) => {
+  const moveDown = () => {
     const interval = setInterval(() => {
       const element = squerRef.current;
       const elementCss = getComputedStyle(element);
-      const down = parseFloat(elementCss.down);
-      element.style.down = `${element - step}px`;
+      const top = parseFloat(elementCss.top);
+      element.style.top = `${top + step}px`;
     }, 0);
 
     setIntervalRef(interval);
   };
 
   const moveDownUp = () => {
+    clearInterval(intervalRef);
+  };
+
+  const moveUp = () => {
+    const interval = setInterval(() => {
+      const element = squerRef.current;
+      const elementCss = getComputedStyle(element);
+      const top = parseFloat(elementCss.top);
+      element.style.top = `${top - step}px`;
+    }, 0);
+
+    setIntervalRef(interval);
+  };
+
+  const moveUpClear = () => {
     clearInterval(intervalRef);
   };
 
@@ -65,6 +80,9 @@ export const Ref = () => {
         </button>
         <button onMouseDown={moveDown} onMouseUp={moveDownUp}>
           Down
+        </button>
+        <button onMouseDown={moveUp} onMouseUp={moveUpClear}>
+          Up
         </button>
       </div>
     </div>
