@@ -1,0 +1,14 @@
+.squer {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    left: 0;
+    top: 0;
+}
+
+.action {
+    margin-left: 600px;
+    margin-top: 300px;
+    gap: 50px
+}
