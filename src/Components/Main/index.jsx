@@ -23,45 +23,45 @@ export const Main = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newTask),
-    }).then((res) =>
-      res.json().then((data) => {
+    })
+      .then((res) => res.json())
+      .then((data) => {
         setTodoData((prev) => {
           return [...prev, data];
         });
-      })
-    );
+      });
   };
 
   const deleteTask = (_id) => {
-    fetch(`${BACKEND_URL}/task${id}`, {
+    fetch(`${BACKEND_URL}/task/${_id}`, {
       method: "DELETE",
-    }).then(data=>{
+    }).then((data) => {
       setTodoData((prev) => prev.filter((task) => task._id !== _id));
-  })
-  
-  const onEdit = (_id,editData) => {
+    });
+  };
+
+  const onEdit = (_id, editData) => {
     fetch(`${BACKEND_URL}/task/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(editData),
-    }).then((res) =>
-      res.json().then((data) => {
-       console.log(data)
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setTodoData((prev) =>
+          prev.map((task) => {
+            if (task._id === _id) {
+              return data;
+            }
 
-    setTodoData((prev) => {
-      return prev.map((item) => {
-        if (item.id === editData.id) {
-          return editData;
-        }
-
-        return item;
+            return task;
+          })
+        );
       });
-    });
+  };
 
-   
-  
   useEffect(() => {
     fetch(`${BACKEND_URL}/task`)
       .then((res) => res.jason())
@@ -83,4 +83,4 @@ export const Main = () => {
       />
     </main>
   );
-  };
+};
