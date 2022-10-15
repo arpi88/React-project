@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { Form, FormGroup, Label, Input, FormText, Button } from "reactstrap";
 export const TaskForm = ({ onSubmit, editData }) => {
   const [formData, setFormData] = useState({
-    title: '',
-    description: '',
+    title: "",
+    description: "",
   });
 
   const handleChange = (e) => {
@@ -19,14 +19,14 @@ export const TaskForm = ({ onSubmit, editData }) => {
 
   useEffect(() => {
     if (editData) {
-      const { title, description } = editData
+      const { title, description } = editData;
 
       setFormData({
         title,
-        description
-      })
+        description,
+      });
     }
-  }, [editData])
+  }, [editData]);
 
   return (
     <Form
@@ -35,10 +35,7 @@ export const TaskForm = ({ onSubmit, editData }) => {
         event.preventDefault();
 
         if (editData) {
-          onSubmit({
-            ...editData,
-            ...formData
-          })
+          onSubmit(editData._id, formData);
         } else {
           onSubmit(formData);
           setFormData({
@@ -50,12 +47,22 @@ export const TaskForm = ({ onSubmit, editData }) => {
     >
       <FormGroup className="form-group">
         <Label>Title</Label>
-        <Input className="input" name={"title"} onChange={handleChange} value={formData.title} />
+        <Input
+          className="input"
+          name={"title"}
+          onChange={handleChange}
+          value={formData.title}
+        />
         <FormText></FormText>
       </FormGroup>
       <FormGroup className="form-group">
         <Label>Description</Label>
-        <Input className="input" name="description" onChange={handleChange} value={formData.description} />
+        <Input
+          className="input"
+          name="description"
+          onChange={handleChange}
+          value={formData.description}
+        />
         <FormText></FormText>
       </FormGroup>
       <Button color="primary">{editData ? "Edit Task" : "Add New Task"}</Button>
