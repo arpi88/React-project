@@ -64,11 +64,11 @@ export const Main = () => {
 
   useEffect(() => {
     fetch(`${BACKEND_URL}/task`)
-      .then((res) => res.jason())
+      .then((res) => res.json())
       .then((data) => {
         setTodoData(data);
       });
-  });
+  },[]);
 
   return (
     <main className="main-div">
