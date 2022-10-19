@@ -1,6 +1,6 @@
 .aside-div {
     width: 300px;
-    height: calc(100vh-100px);
+    height: 100vh;
     background-color: rgb(250, 232, 250);
     border: 1px solid rgb(237, 164, 237)
 }

@@ -5,10 +5,20 @@ import { TaskForm } from "../TaskForm";
 import { useState } from "react";
 import { useEffect } from "react";
 import { BACKEND_URL } from "../../consts";
+import { Button } from "reactstrap";
 
 export const Main = () => {
   const [todoData, setTodoData] = useState([]);
   const [editData, setEditData] = useState(null);
+  const [selectedTask,setSelectedTask]=useState([]);
+
+  const toggleSelectedTask=(taskId)=>{
+    if(selectedTask.includes(taskId)){
+        setSelectedTask(prev=>prev.filter(selectedTaskID=>selectedTaskID!==taskId))
+    }else(setSelectedTask(prev=>[...prev,taskId]))
+  }
+
+ 
 
   const onAddTask = (formData) => {
     const { title, description } = formData;
@@ -61,7 +71,29 @@ export const Main = () => {
         );
       });
   };
-
+  
+  
+  const handleDeleteBatchTask=()=>{
+    fetch(`${BACKEND_URL}/task/`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({tasks:selectedTask}),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setTodoData((prev) =>
+            prev.filter(task => 
+             !selectedTask.includes(task._id)))
+               setSelectedTask([])
+            })
+          
+        
+    
+  }
+    
+  
   useEffect(() => {
     fetch(`${BACKEND_URL}/task`)
       .then((res) => res.json())
@@ -72,7 +104,10 @@ export const Main = () => {
 
   return (
     <main className="main-div">
+       
       <div className="poject-forms">
+      {!!selectedTask.length && <Button color="secondary"className="deleteAllButton"
+        onClick={handleDeleteBatchTask}>Delete All </Button>}
         <TaskForm onSubmit={onAddTask} />
         {!!editData && <TaskForm onSubmit={onEdit} editData={editData} />}
       </div>
@@ -80,6 +115,10 @@ export const Main = () => {
         todoData={todoData}
         deleteTask={deleteTask}
         setEditData={setEditData}
+        toggleSelectedTask={toggleSelectedTask}
+        selectedTask={selectedTask}
+       
+
       />
     </main>
   );

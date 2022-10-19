@@ -65,7 +65,7 @@ export const TaskForm = ({ onSubmit, editData }) => {
         />
         <FormText></FormText>
       </FormGroup>
-      <Button color="primary">{editData ? "Edit Task" : "Add New Task"}</Button>
+      <Button color="primary" >{editData ? "Edit Task" : "Add New Task"}</Button>
     </Form>
   );
 };
