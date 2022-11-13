@@ -11,13 +11,13 @@
     width: 290px;
 }
 
-.input-button {
-    width: 100px;
-    height: 30px;
-    margin-top: 20px;
-}
-
 .input {
     height: 30px;
     margin-top: 5px;
+}
+.add-new-task-button{
+   
+    height: 30px;
+    margin-top: 20px;
+
 }

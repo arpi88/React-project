@@ -58,7 +58,7 @@ export const TaskForm = ({ onSubmit, editData }) => {
         <Input className="input" name="description" onChange={handleChange} value={formData.description} />
         <FormText></FormText>
       </FormGroup>
-      <Button color="primary">{editData ? "Edit Task" : "Add New Task"}</Button>
+      <Button className=" add-new-task-button"color="primary">{editData ? "Edit Task" : "Add New Task"} </Button>
     </Form>
   );
 };
