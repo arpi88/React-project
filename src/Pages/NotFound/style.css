@@ -1,6 +1,10 @@
 .not-found{
-    width: 100%;
-    height: calc(100vh -112px);
-    background: url(../../../public/images/back.jpg);
-    background-size: cover;
+    width: 700px;
+    height:400px;
+   /* background: url(../../../public/images/back.jpg);*/
+    background-size: contain;
+    background-repeat: no-repeat;
+    font-size: 60PX;
+    color: black;
+    font-weight: 400;
 }

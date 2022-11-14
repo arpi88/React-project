@@ -1,10 +1,10 @@
-import "./style.css";
-import { Link } from "react-router-dom";
+import "./style.scss";
+import { NavLink } from "react-router-dom";
 export const Nav = () => {
   return (
     <ul className="nav-list">
       <li className="nav-item">
-        <Link
+        < NavLink
           to="/"
           className={({ isActive }) =>
             "nav-link" + (isActive ? "selected" : "")
@@ -12,17 +12,17 @@ export const Nav = () => {
           end
         >
           Todo List
-        </Link>
+        </ NavLink>
       </li>
       <li className="nav-item">
-        <Link to="/aboutMe" className="nav-link">
+        < NavLink to="/aboutMe" className="nav-link">
           About me
-        </Link>
+        </ NavLink>
       </li>
       <li className="nav-item">
-        <Link to="/contactMe " className="nav-link">
+        < NavLink to="/contactMe" className="nav-link">
           Contact me
-        </Link>
+        </ NavLink>
       </li>
     </ul>
   );

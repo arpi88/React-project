@@ -1,10 +1,10 @@
-.header-part {
+/*.header-part {
   width: 100%;
   height: 100px;
   background-color: rgb(243, 210, 243);
   display: flex;
   flex-direction: row;
-  /*justify-content: end;*/
+  /*justify-content: end;
 }
 
 .header-menu-wrapper {
@@ -19,7 +19,7 @@
   display: flex;
   list-style: none;
   gap: 20px;
-}
+}*/
 .logo-img {
   width: 100px;
   height: 100px;
