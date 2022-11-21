@@ -1,0 +1,96 @@
+.about-me-div {
+  max-width: auto;
+  display: flex;
+  background: url(../../../public/images/phoenix.png);
+  background-repeat: no-repeat;
+  flex-direction: column;
+}
+.about-me {
+  font-size: 48px;
+  font-style: italic;
+  color: rgb(65, 22, 65);
+  margin-left: 300px;
+}
+.info-div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  max-width: 600px;
+  padding-left: 300px;
+}
+.name-last {
+  color: rgb(65, 22, 65);
+  font-style: italic;
+  font-size: 24px;
+  text-align: center;
+}
+
+.p1{
+    text-align: start;
+}
+.skills{
+    font-size: 24px;
+    color: rgb(65, 22, 65);
+    font-weight: 600;
+    font-style: italic;
+    margin-top:0;
+
+}
+.skills-div{
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+   
+
+}
+.workplace{
+    font-size:24px;
+     font-weight:400;
+     margin-top:0;
+     
+}
+.exp-div{
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+
+}
+.exp{
+    font-size: 24px;
+    color: rgb(65, 22, 65);
+    font-weight: 600;
+    font-style: italic;
+  
+
+}
+.span{
+    font-size: 14px;
+    margin-left: 20px;
+   
+}
+.position{
+margin-top: 0;
+}
+.education-div{
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+
+
+}
+.education{
+    font-size: 24px;
+    color: rgb(65, 22, 65);
+    font-weight: 600;
+    font-style: italic;
+
+}
+.univercity-date{
+    margin-top: 0;
+    font-size: 14px;
+    
+
+}

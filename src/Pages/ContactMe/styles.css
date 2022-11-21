@@ -1,0 +1,18 @@
+.contactMe-div{
+    display: flex;
+    max-width: 100%;
+    flex-direction: column;
+}
+.contactMe{
+    margin-left: 450px;
+}
+.contactInfo-div{
+    margin-top:0 ;
+ display: flex;
+ flex-direction: row;
+padding-left: 100px;
+}
+.contactInfo{
+    font-weight: 400px;
+    margin-right: 10px;
+}

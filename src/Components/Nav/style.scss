@@ -1,8 +1,9 @@
 .nav-list{
     display: flex;
-    gap:10px;
-    align-items: center;
+    gap:20px;
+    margin-left: 900px;
     list-style: none;
+    
 }
 .nav-item {
    &:hover{

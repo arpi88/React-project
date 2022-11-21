@@ -1,10 +1,14 @@
 .not-found{
     width: 700px;
     height:400px;
-   /* background: url(../../../public/images/back.jpg);*/
+   margin-top: 30px;
+   border-radius: 10px;
     background-size: contain;
     background-repeat: no-repeat;
-    font-size: 60PX;
-    color: black;
+    font-size: 40PX;
+    color:rgb(53, 4, 53);
     font-weight: 400;
+    margin-left: 150px;
+    background-color: rgb(222, 195, 222);
+    
 }

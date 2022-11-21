@@ -1,11 +1,13 @@
 import "./style.css";
 import { useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
 import { Form, FormGroup, Label, Input, FormText, Button } from "reactstrap";
 export const TaskForm = ({ onSubmit, editData }) => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
   });
+  const [startDate, setStartDate] = useState(new Date());
 
   const handleChange = (e) => {
     const { target } = e;
@@ -40,7 +42,7 @@ export const TaskForm = ({ onSubmit, editData }) => {
             ...formData
           })
         } else {
-          onSubmit(formData);
+          onSubmit({...formData,date:startDate});
           setFormData({
             title: " ",
             description: " ",
@@ -58,6 +60,9 @@ export const TaskForm = ({ onSubmit, editData }) => {
         <Input className="input" name="description" onChange={handleChange} value={formData.description} />
         <FormText></FormText>
       </FormGroup>
+      <div className="datapicker-input">
+        <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+        </div>
       <Button className=" add-new-task-button"color="primary">{editData ? "Edit Task" : "Add New Task"} </Button>
     </Form>
   );

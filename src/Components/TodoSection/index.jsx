@@ -11,6 +11,7 @@ export const TodoSection = ({ todoData, deleteTask, setEditData }) => {
             key={todo.id}
             deleteTask={deleteTask}
             setEditData={setEditData}
+            
           />
         );
       })}
