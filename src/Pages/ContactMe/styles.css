@@ -1,11 +1,13 @@
 .contactMe-div{
     display: flex;
-    max-width: 100%;
+    width: 100%;
     flex-direction: column;
+    align-items: center;
 }
 .contactMe{
-    margin-left: 450px;
+    
 }
+
 .contactInfo-div{
     margin-top:0 ;
  display: flex;
