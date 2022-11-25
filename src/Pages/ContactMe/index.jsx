@@ -15,10 +15,9 @@ export const ContactMe = () => {
       </div>
 
       <div className="contactInfo-div">
-        <p className="contactInfo">
+        <a href="https://www.linkedin.com/in/arpine-hakobyan-466092181/">
           linkedin:
-          <a href="url">linkedin.com/in/arpine-hakobyan-466092181</a>
-        </p>
+        </a>
       </div>
     </div>
   );
