@@ -1,11 +1,12 @@
 import "./style.css";
 import { useEffect, useState } from "react";
+
 import DatePicker from "react-datepicker";
 import { Form, FormGroup, Label, Input, FormText, Button } from "reactstrap";
-export const TaskForm = ({ onSubmit, editData }) => {
+export const TaskForm = ({ onSubmit, editableTaskData }) => {
   const [formData, setFormData] = useState({
-    title: '',
-    description: '',
+    title: "",
+    description: "",
   });
   const [startDate, setStartDate] = useState(new Date());
 
@@ -20,15 +21,15 @@ export const TaskForm = ({ onSubmit, editData }) => {
   };
 
   useEffect(() => {
-    if (editData) {
-      const { title, description } = editData
+    if (editableTaskData) {
+      const { title, description } = editableTaskData;
 
       setFormData({
         title,
-        description
-      })
+        description,
+      });
     }
-  }, [editData])
+  }, [editableTaskData]);
 
   return (
     <Form
@@ -36,13 +37,10 @@ export const TaskForm = ({ onSubmit, editData }) => {
       onSubmit={(event) => {
         event.preventDefault();
 
-        if (editData) {
-          onSubmit({
-            ...editData,
-            ...formData
-          })
+        if (editableTaskData) {
+          onSubmit(editableTaskData._id, formData);
         } else {
-          onSubmit({...formData,date:startDate});
+          onSubmit({ ...formData, date: startDate.toISOString().slice(0, 10) });
           setFormData({
             title: " ",
             description: " ",
@@ -52,18 +50,33 @@ export const TaskForm = ({ onSubmit, editData }) => {
     >
       <FormGroup className="form-group">
         <Label>Title</Label>
-        <Input className="input" name={"title"} onChange={handleChange} value={formData.title} />
+        <Input
+          className="input"
+          name={"title"}
+          onChange={handleChange}
+          value={formData.title}
+        />
         <FormText></FormText>
       </FormGroup>
       <FormGroup className="form-group">
         <Label>Description</Label>
-        <Input className="input" name="description" onChange={handleChange} value={formData.description} />
+        <Input
+          className="input"
+          name="description"
+          onChange={handleChange}
+          value={formData.description}
+        />
         <FormText></FormText>
       </FormGroup>
       <div className="datapicker-input">
-        <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-        </div>
-      <Button className=" add-new-task-button"color="primary">{editData ? "Edit Task" : "Add New Task"} </Button>
+        <DatePicker
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
+        />
+      </div>
+      <Button className=" add-new-task-button" color="primary">
+        {editableTaskData ? "Edit Task" : "Add New Task"}{" "}
+      </Button>
     </Form>
   );
 };

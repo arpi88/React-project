@@ -3,61 +3,107 @@ import "./style.css";
 import { TodoSection } from "../TodoSection";
 import { TaskForm } from "../TaskForm";
 import { useState } from "react";
-
-const data = [
-  /*{
-    id: 2,
-    title: "Arizona",
-    description:
-      "Arizona is a landlocked state situated in the southwestern United States, bordering Mexico in the south. The Grand Canyon State (its nickname) borders Utah to the north, New Mexico to the east, the Mexican states of Sonora and Baja California to the south, California in the west, and Nevada in northwest.",
-  },*/
-];
+import { useEffect } from "react";
+import { BACKEND_URL } from "../../consts";
+import { Button } from "reactstrap";
 
 export const Main = () => {
-  const [todoData, setTodoData] = useState(data);
-  const [editData, setEditData] = useState(null);
+  const [todoData, setTodoData] = useState([]);
+  const [editableTaskData, setEditableTaskData] = useState(null);
+  const [selectedTask, setSelectedTask] = useState([]); 
+
+  const toggleSelectTask = (taskId) => {
+    if (selectedTask.includes(taskId)) {
+      setSelectedTask((prev) =>
+        prev.filter((selectedTaskId) => selectedTaskId !== taskId)
+      );
+    } else setSelectedTask((prev) => [...prev, taskId]);
+  };
 
   const onAddTask = (formData) => {
-    const { title, description } = formData;
-
-    const newTask = {
-      id: Math.random(),
-      title,
-      description,
-    };
-
-    setTodoData((prev) => {
-      return [...prev, newTask];
-    });
-  };
-
-  const deleteTask = (id) => {
-    setTodoData((prev) => prev.filter((task) => task.id !== id));
-  };
-  const onEdit = (editedData) => {
-    setTodoData((prev) => {
-      return prev.map((item) => {
-        if (item.id === editedData.id) {
-          return editedData;
-        }
-
-        return item;
+    fetch(`${BACKEND_URL}/task`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setTodoData((prev) => {
+          return [...prev, data];
+        });
       });
-    });
-
-    setEditData(null);
   };
+
+  const deleteTask = (_id) => {
+    fetch(`${BACKEND_URL}/task/${_id}`, {
+      method: "DELETE",
+    }).then((data) => {
+      setTodoData((prev) => prev.filter((task) => task._id !== _id));
+    });
+  };
+
+  const onEditDone = (_id, editedTaskData) => {
+    fetch(`${BACKEND_URL}/task/${_id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(editedTaskData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setTodoData((prev) =>
+          prev.map((task) => {
+            if (task._id === _id) {
+              return data;
+            }
+            return task;
+          })
+        );
+      });
+
+    setEditableTaskData(null);
+  };
+  const handleDeleteTasks = () => {
+    fetch(`${BACKEND_URL}/task/`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ tasks: selectedTask }),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        setTodoData((prev) =>
+          prev.filter((task) => !selectedTask.includes(task._id))
+        );
+        setSelectedTask([]);
+      });
+  };
+
+  useEffect(() => {
+    fetch(`${BACKEND_URL}/task`)
+      .then((res) => res.json())
+      .then((data) => {
+        setTodoData(data);
+      });
+  }, []);
 
   return (
     <main className="main-div">
+      {selectedTask.length ? (
+        <Button onClick={handleDeleteTasks}>Delete All</Button>
+      ) : null}
       <div className="poject-forms">
         <TaskForm onSubmit={onAddTask} />
-        {!!editData && <TaskForm onSubmit={onEdit} editData={editData} />}
+        {editableTaskData && (
+          <TaskForm onSubmit={onEditDone} editableTaskData={editableTaskData} />
+        )}
       </div>
       <TodoSection
         todoData={todoData}
         deleteTask={deleteTask}
-        setEditData={setEditData}
+        setEditableTaskData={setEditableTaskData}
+        toggleSelectTask={toggleSelectTask}
+        selectedTask={selectedTask}
       />
     </main>
   );

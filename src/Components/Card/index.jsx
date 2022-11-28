@@ -7,11 +7,23 @@ import {
   Button,
 } from "reactstrap";
 
-export const Card = ({ todo, deleteTask, setEditData }) => {
-  const { title, description, id, date } = todo;
+export const Card = ({
+  todo,
+  deleteTask,
+  setEditableTaskData,
+  toggleSelectTask,
+  isSelected,
+}) => {
+  const { title, description, _id, date } = todo;
   const isDate = todo.date;
   return (
     <LibCard className="card-wrapper" style={{ width: "18rem" }}>
+      <input
+        type="checkbox"
+        className="checkbox"
+        onChange={() => toggleSelectTask(todo._id)}
+        checked={isSelected}
+      />
       <CardBody>
         <CardTitle tag="h5">{title}</CardTitle>
         <CardText>{description}</CardText>
@@ -20,10 +32,13 @@ export const Card = ({ todo, deleteTask, setEditData }) => {
         ) : null}
 
         <div className="button-wrapper">
-          <Button className="delete-button" onClick={() => deleteTask(id)}>
+          <Button className="delete-button" onClick={() => deleteTask(_id)}>
             Delete
           </Button>
-          <Button className="edit-button" onClick={() => setEditData(todo)}>
+          <Button
+            className="edit-button"
+            onClick={() => setEditableTaskData(todo)}
+          >
             Edit
           </Button>
         </div>
