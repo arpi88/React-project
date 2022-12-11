@@ -13,8 +13,9 @@ export const Card = ({
   setEditableTaskData,
   toggleSelectTask,
   isSelected,
+  onStatusChange,
 }) => {
-  const { title, description, _id, date } = todo;
+  const { title, description, _id, date, status } = todo;
   const isDate = todo.date;
   return (
     <LibCard className="card-wrapper" style={{ width: "18rem" }}>
@@ -40,6 +41,9 @@ export const Card = ({
             onClick={() => setEditableTaskData(todo)}
           >
             Edit
+          </Button>
+          <Button onClick={() => onStatusChange(_id, status)}>
+            {status === "active" ? "Done" : "Active"}
           </Button>
         </div>
       </CardBody>

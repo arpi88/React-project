@@ -1,0 +1,9 @@
+.sort-status-div{
+display: flex;
+flex-direction: column;
+padding-left: 65px;
+padding-top: 5px;
+gap:5px;
+width: 168px;
+background-color: rgb(241, 237, 237);
+}

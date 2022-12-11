@@ -10,7 +10,7 @@ import { Button } from "reactstrap";
 export const Main = () => {
   const [todoData, setTodoData] = useState([]);
   const [editableTaskData, setEditableTaskData] = useState(null);
-  const [selectedTask, setSelectedTask] = useState([]); 
+  const [selectedTask, setSelectedTask] = useState([]);
 
   const toggleSelectTask = (taskId) => {
     if (selectedTask.includes(taskId)) {
@@ -36,6 +36,26 @@ export const Main = () => {
       });
   };
 
+  const onStatusChange = (_id, carrentStatus) => {
+    const status = carrentStatus === "active" ? "done" : "active";
+    fetch(`${BACKEND_URL}/task/${_id}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "PUT",
+      body: JSON.stringify({ status }),
+    }).then(() => {
+      setTodoData((prev) =>
+        prev.map((task) => {
+          if (task._id === _id) {
+            return { ...task, status };
+          }
+
+          return task;
+        })
+      );
+    });
+  };
   const deleteTask = (_id) => {
     fetch(`${BACKEND_URL}/task/${_id}`, {
       method: "DELETE",
@@ -104,6 +124,7 @@ export const Main = () => {
         setEditableTaskData={setEditableTaskData}
         toggleSelectTask={toggleSelectTask}
         selectedTask={selectedTask}
+        onStatusChange={onStatusChange}
       />
     </main>
   );

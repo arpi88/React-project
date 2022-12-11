@@ -7,8 +7,8 @@ export const TodoSection = ({
   setEditableTaskData,
   toggleSelectTask,
   selectedTask,
+  onStatusChange,
 }) => {
- 
   return (
     <div className="main-div">
       {todoData.map((todo) => {
@@ -20,6 +20,7 @@ export const TodoSection = ({
             setEditableTaskData={setEditableTaskData}
             toggleSelectTask={() => toggleSelectTask(todo._id)}
             isSelected={selectedTask.includes(todo._id)}
+            onStatusChange={onStatusChange}
           />
         );
       })}

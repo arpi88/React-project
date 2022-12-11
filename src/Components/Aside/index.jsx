@@ -1,4 +1,9 @@
 import "./style.css";
-export const Aside = () => {
-  return <div className="aside-div"></div>;
+import { Filters } from "./Filterts";
+export const Aside = ({ changeFilter, filterOptions }) => {
+  return (
+    <aside className="aside-div">
+      <Filters changeFilter={changeFilter} filterOptions={filterOptions} />
+    </aside>
+  );
 };
